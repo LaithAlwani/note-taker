@@ -6,6 +6,8 @@ const PORT = 3000;
 
 const notes = [];
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/notes', (req,res)=>{
     res.sendFile(path.join(__dirname, "views/notes.html"));
 });
@@ -22,7 +24,7 @@ app.delete('/api/notes/:id', (req,res)=>{
     res.end("hello from delete");
 });
 
-app.get('*', (req,res)=>{
+app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, "views/index.html"));
 });
 
