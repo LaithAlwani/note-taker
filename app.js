@@ -20,7 +20,6 @@ app.get('/api/notes', (req,res)=>{
         if (err) throw err;
         data = JSON.parse(data);
         notes = data;   
-        console.log(notes);
         res.json(data);
       });
     
@@ -34,12 +33,21 @@ app.post('/api/notes', (req,res)=>{
     
     fs.writeFile('./db/db.json', JSON.stringify(notes) , err=>{
         err ? 
-        console.error(err) :console.log('saved to database')
+        console.error(err) :console.log('remove note from database')
     });
 });
 
 app.delete('/api/notes/:id', (req,res)=>{
-    res.end("hello from delete");
+    const id = parseInt(req.params.id);
+    notes.forEach((note, index) =>{
+        if(note.id === id){
+            notes.splice(index, 1);
+            fs.writeFile('./db/db.json', JSON.stringify(notes) , err=>{
+                err ? 
+                console.error(err) :console.log('saved to database')
+            });   
+        }
+    })
 });
 
 app.get('/', (req,res)=>{
