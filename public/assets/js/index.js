@@ -9,7 +9,7 @@ let activeNote = {};
 
 // A function for getting all notes from the db
 const getNotes = () => {
-  console.log('from get notes function');
+  console.log(' get notes function');
   return $.ajax({
     url: "/api/notes",
     method: "GET",
@@ -57,10 +57,10 @@ const handleNoteSave = function () {
     text: $noteText.val(),
   };
 
-  saveNote(newNote).then(() => {
+  saveNote(newNote)
     getAndRenderNotes();
     renderActiveNote();
-  });
+  
 };
 
 // Delete the clicked note

@@ -1,12 +1,11 @@
 const express = require('express');
 const path = require('path');
 const fs   = require('fs');
-const { json } = require('express');
+// const { json } = require('express');
 const app = express();
 
 const PORT = 3000;
-
-const notes = [];
+const notes = []
 let id=0;
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -14,10 +13,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/notes', (req,res)=>{
     res.sendFile(path.join(__dirname, "public/views/notes.html"));
+    
 });
 
 app.get('/api/notes', (req,res)=>{
-    return res.json(notes);
+    fs.readFile(__dirname + '/db/db.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        data = JSON.parse(data);   
+        res.json(data);
+      });
+    
 });
 
 app.post('/api/notes', (req,res)=>{
