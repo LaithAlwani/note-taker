@@ -31,7 +31,7 @@ app.post('/api/notes', (req,res)=>{
     const newNote = req.body;
     newNote.id = id; 
     notes.push(newNote);
-    // saveData();
+    saveData();
     res.end();
 });
 
