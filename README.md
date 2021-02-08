@@ -25,6 +25,7 @@ An application that is  used to write, save, and delete notes.
 * enter a title and some text then press the save button to save the note
 * press on a previously saved note title to see the note content 
 * click the trash can icon to delete a note
+![](./public/assets/images/noteTaker.png)
 
 ## License:
 This application is covered under the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT).    
